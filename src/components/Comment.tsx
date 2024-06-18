@@ -1,10 +1,14 @@
-/* eslint-disable react/prop-types */
 import { ThumbsUp, Trash } from "@phosphor-icons/react";
 import Avatar from "./Avatar";
 import styles from "./Comment.module.css";
 import { useState } from "react";
 
-export function Comment({ content, onDeleteComment }) {
+interface CommentProps {
+  content: string;
+  onDeleteComment: (comment: string) => void;
+}
+
+export function Comment({ content, onDeleteComment }: CommentProps) {
   const [likeCount, setLikeCount] = useState(0);
 
   function handleDeleteComment() {
@@ -20,6 +24,7 @@ export function Comment({ content, onDeleteComment }) {
   return (
     <div className={styles.comment}>
       <Avatar
+        alt=""
         src="https://github.com/GustavoMoraisSantos.png"
         hasBorder={false}
       />
